@@ -21,7 +21,6 @@ while(1)
 
     nchars_read = getline(&linequry, &n, stdin);
 
-    printf("%ld\n", nchars_read);
     
     if (nchars_read == -1)
     {
@@ -48,7 +47,6 @@ while(1)
     }
     num_tokens++;
 
-    printf("%d\n", num_tokens);
 
     argv = malloc(sizeof(char *) * num_tokens);
     
@@ -57,8 +55,6 @@ while(1)
     for (i = 0; token != NULL; i++){
             argv[i] = malloc(sizeof(char) * strlen(token));
             string_copy(argv[i], token);
-            printf("%d\n", i);
-            printf("%s\n", argv[i]);
             token = strtok(NULL, delim);
         }
     argv[i] = NULL;
