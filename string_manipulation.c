@@ -5,7 +5,7 @@
  * @dest: the destination
  * @src: the source
  *
- * Return: pointer to the new string
+ * Return: pointer to the new test
  */
 char *string_copy(char *dest, const char *src)
 {
