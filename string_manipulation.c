@@ -9,18 +9,14 @@
  */
 char *string_concatenate(char *destination, char *src)
 {
-	int a, b;
+	char *ret = destination;
 
-	for (a = 0; destination[a] != '\0'; a += 1)
-	{}
-
-	for (b = 0; src[b] != '\0'; b += 1)
-	{
-		destination[a] = src[b];
-		a++;
-	}
-	destination[a] = '\0';
-	return (destination);
+	while (*destination)
+		destination++;
+	while (*src)
+		*destination++ = *src++;
+	*destination = *src;
+	return (ret);
 }
 
 
@@ -55,12 +51,19 @@ int string_compare(const char *string1, const char *string2)
 
 int string_lenght(char *c)
 {
-   int i = 0;
-
-	while (c[i] != '\0')
-		i++;
-
-	return (i);
+   int len = 0;
+    if (!c)
+    {
+        return (0);
+    }
+    else
+    {
+        for (; *c; c++)
+        {
+            len++;
+        }
+    }
+    return (len);
 }
 
 /**
