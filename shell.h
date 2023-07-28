@@ -19,7 +19,7 @@ char **_split(char *str, char *sep);
 void *allocate(unsigned int nmemb, unsigned int size);
 char *search_path(char *command);
 char *getenviron(char *env_var);
-
+char *get_location(char *command);
 extern char **environ;
 
 #endif
