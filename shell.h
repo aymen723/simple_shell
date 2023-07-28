@@ -17,8 +17,8 @@ int empty_line(char *command);
 void _env(void);
 char **_split(char *str, char *sep);
 void *_calloc(unsigned int nmemb, unsigned int size);
-
-
+char *search_path(char *command);
+char *_getenv(char *env_var);
 
 extern char **environ;
 

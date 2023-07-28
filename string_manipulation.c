@@ -9,14 +9,18 @@
  */
 char *string_concatenate(char *destination, char *src)
 {
-	char *ret = destination;
+	int a, b;
 
-	while (*destination)
-		destination++;
-	while (*src)
-		*destination++ = *src++;
-	*destination = *src;
-	return (ret);
+	for (a = 0; destination[a] != '\0'; a += 1)
+	{}
+
+	for (b = 0; src[b] != '\0'; b += 1)
+	{
+		destination[a] = src[b];
+		a++;
+	}
+	destination[a] = '\0';
+	return (destination);
 }
 
 
@@ -29,10 +33,10 @@ char *string_concatenate(char *destination, char *src)
  */
 int string_compare(const char *string1, const char *string2)
 {
-    while (*string1 || *string2)
+    while (*string1 && *string2)
     {
         if (*string1 != *string2)
-            return (*string1 < *string2) ? -1 : 1;
+            return (*string1 - *string2);
 
         string1++;
         string2++;
@@ -51,19 +55,12 @@ int string_compare(const char *string1, const char *string2)
 
 int string_lenght(char *c)
 {
-    int len = 0;
-    if (!c)
-    {
-        return (0);
-    }
-    else
-    {
-        for (; *c; c++)
-        {
-            len++;
-        }
-    }
-    return (len);
+   int i = 0;
+
+	while (c[i] != '\0')
+		i++;
+
+	return (i);
 }
 
 /**
@@ -100,7 +97,7 @@ char *string_copy(char *dest, const char *src)
 {
     char *ret = dest;
 
-    while (*src)
+    while (*src != '\0')
     {
         *dest = *src;
         dest++;
