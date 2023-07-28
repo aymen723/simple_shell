@@ -12,6 +12,7 @@ int main(void)
 	int status = 0;
 	char **argv;
 	char *qury = "$ ";
+
 	while (1)
 	{
 		if (isatty(0))
