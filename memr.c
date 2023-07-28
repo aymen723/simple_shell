@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * allocate - a function that allocate memmory for an array

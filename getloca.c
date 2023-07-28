@@ -1,11 +1,10 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * search_path - search file between the path
  * @command: cmd
  * Return: cmd path
  */
-
 char *search_path(char *command)
 {
 	char *path = getenviron("PATH"), *path_cpy;

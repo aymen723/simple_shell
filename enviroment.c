@@ -1,7 +1,7 @@
-#include"shell.h"
+#include"main.h"
 
 /**
- * getenv - prints environment
+ * getenvironment - prints environment
  * Retunr: void
 */
 void getenvironment(void)
@@ -18,7 +18,7 @@ void getenvironment(void)
 /**
  * getenviron - get env variables
  * @env_var: env variable
- * Return: env variable result, its content
+ * Return: return the env result
  */
 
 char *getenviron(char *env_var)
