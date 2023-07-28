@@ -1,10 +1,12 @@
 #include"shell.h"
 
+
+
 int executecommands(char **argv)
 {
     int id = fork(), status;
 	
-	
+
 	if (id == 0)
 	{
 		if (execve(argv[0], argv, environ) == -1)

@@ -37,7 +37,7 @@ int main(void)
 
 		argv = _split(linequry, " ");
 		argv[0] = get_location(argv[0]);
-
+		
 		if (argv[0] != NULL)
 			status = executecommands(argv);
 		else
