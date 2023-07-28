@@ -4,15 +4,11 @@ int main(void)
 {
 
     char *linequry = NULL;
-    char *linequry_copy = NULL;
     size_t n = 0; 
     ssize_t nchars_read; 
     int status = 0;
     char **argv;
     char *qury = "$ ";
-    int num_tokens = 0;
-    char *token;
-    int i;
 
 	while (1)
 	{
@@ -22,6 +18,7 @@ int main(void)
 		nchars_read = getline(&linequry, &n, stdin);
 		if (nchars_read == -1 || string_compare("exit\n", linequry) == 0)
 		{
+			free(linequry);
 			break;
 		}
 		linequry[nchars_read - 1] = '\0';
@@ -38,40 +35,14 @@ int main(void)
 			continue;
 		}
 
+		argv = _split(linequry, " ");
+		argv[0] = search_path(argv[0]);
 
-         linequry_copy = malloc(sizeof(char) * nchars_read);
-
-	    string_copy(linequry_copy, linequry);
-
-       
-        token = strtok(linequry, " ");
-
-        while (token != NULL){
-            num_tokens++;
-            token = strtok(NULL, " ");
-        }
-        num_tokens++;
-
-        argv = malloc(sizeof(char *) * num_tokens);
-
-        token = strtok(linequry_copy, " ");
-
-        for (i = 0; token != NULL; i++){
-            argv[i] = malloc(sizeof(char) * string_lenght(token));
-            string_copy(argv[i], token);
-
-            token = strtok(NULL, " ");
-        }
-        argv[i] = NULL;
-
-        status = executecommands(argv);
+		if (argv[0] != NULL)
+			status = executecommands(argv);
+		else
+			perror("Error");
+		free(argv);
 	}
-
-   free(argv);
-   free(linequry_copy);
-   free(linequry);
-
-
 	return (status);
-   
 }
