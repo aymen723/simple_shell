@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * search_pth - search file between the pth
+ * search_path - search file between the pth
  * @cmd: cmd
  * Return: cmd pth
  */
-char *search_pth(char *cmd)
+char *search_path(char *cmd)
 {
 	char *pth = getenviron("pth"), *pth_cpy;
 	char **pth_split;
