@@ -1,71 +1,53 @@
 #include"shell.h"
 
-
 int main(int ac, char **argv)
 {
-    char *qury = "(shell) $ ";
+    char *qury = "$ ";
     char *linequry = NULL;
-    char *linequry_copy = NULL;
     size_t n = 0; 
     ssize_t nchars_read; 
-    const char *delim = " \n";
-    int num_tokens = 0;
-    char *token;
-    int i;
+    int status;
     (void)ac;
 
-while(1)
-{
+   while(1)
+   {
 
     printf("%s", qury);
 
     nchars_read = getline(&linequry, &n, stdin);
 
-    
-    if (nchars_read == -1)
+    if (nchars_read == -1 || string_compare("exit\n", linequry) == 0 )
     {
+            free(linequry);
             return (-1);
     }
 
-    linequry_copy =  malloc(sizeof(char) * nchars_read);
+    linequry[nchars_read - 1] = '\0';
 
-    if (linequry_copy == NULL)
-    {
-        perror("tsh: memory allocation error");
-        return (-1);
+    if (string_compare("env", linequry) == 0)
+		{
+			_env();
+			continue;
+		}
+
+		if (empty_line(linequry) == 1)
+		{
+			status = 0;
+			continue;
+		}
+
+		argv = _split(linequry, " ");
+
+            if (argv[0] != NULL)
+            {
+               status = executecommands(argv);
+            }
+            else
+            {
+               perror("Error");
+            }
+            free(argv);
     }
 
-    string_copy(linequry_copy,linequry);
-
-
-    token = strtok(linequry, delim);
-
-    while (token != NULL)
-    {
-        num_tokens++;
-        token = strtok(NULL, delim);
-    }
-    num_tokens++;
-
-
-    argv = malloc(sizeof(char *) * num_tokens);
-    
-    token = strtok(linequry_copy, delim);
-
-    for (i = 0; token != NULL; i++){
-            argv[i] = malloc(sizeof(char) * strlen(token));
-            string_copy(argv[i], token);
-            token = strtok(NULL, delim);
-        }
-    argv[i] = NULL;
-
-  
-executecommands(argv);
-
-
-}
-    free(linequry_copy);
-    free(linequry);
-
-    return (0);
+    return (status);
 }

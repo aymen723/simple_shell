@@ -1,0 +1,106 @@
+#include"shell.h"
+
+void executecommands(char **argv)
+{
+      char *command = NULL;
+	pid_t child_pid;
+
+    if (argv){
+        command = argv[0];
+
+
+	child_pid = fork();
+	if (child_pid == -1)
+	{
+		perror("Error:");
+		return;
+	}
+	if (child_pid == 0)
+	{
+		if (execve(command, argv, NULL) == -1)
+		{
+			perror("Error:");
+
+		}
+
+
+       
+    }
+}
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * get_enviroment - a function that do the job of getenv
+ * @name: a pointer to the string name
+ *
+ * Return: return a string
+ */
+
+char *get_enviroment(const char *name) 
+{
+    size_t name_len = strlen(name);
+    int i;
+
+    for (i = 0; environ[i] != NULL; i++)
+    {
+        if (strncmp(environ[i], name, name_len) == 0 && environ[i][name_len] == '=')
+        {
+            return environ[i] + name_len + 1;z
+        }
+    }
+
+    return NULL;
+}
+
+
+
+/**
+ * my_isspace - a function that do the job of isspace
+ * @int: an integer
+ *
+ * Return: return a boolean
+ */
+
+bool my_isspace(int c) 
+{
+    return (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r');
+}
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ linequry_copy =  malloc(sizeof(char) * nchars_read);
+
+    if (linequry_copy == NULL)
+    {
+        perror("tsh: memory allocation error");
+        return (-1);
+    }
+
+    string_copy(linequry_copy,linequry);
+
+
+    token = strtok(linequry, delim);
+
+    while (token != NULL)
+    {
+        num_tokens++;
+        token = strtok(NULL, delim);
+    }
+    num_tokens++;
+
+
+    argv = malloc(sizeof(char *) * num_tokens);
+    
+    token = strtok(linequry_copy, delim);
+
+         for (i = 0; token != NULL; i++){
+            argv[i] = malloc(sizeof(char) * strlen(token));
+            string_copy(argv[i], token);
+            token = strtok(NULL, delim);
+        }
+       argv[i] = NULL;

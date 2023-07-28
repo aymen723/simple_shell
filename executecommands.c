@@ -1,30 +1,23 @@
 #include"shell.h"
 
-void executecommands(char **argv)
+int executecommands(char **argv)
 {
-      char *command = NULL;
-	pid_t child_pid;
+    int id = fork(), status;
+    char *command = argv[0];
 
-    if (argv){
-        command = argv[0];
-
-
-	child_pid = fork();
-	if (child_pid == -1)
+	if (id == 0)
 	{
-		perror("Error:");
-		return;
+		if (execve(command, argv, environ) == -1)
+        {
+			perror("Error");
+        }
 	}
-	if (child_pid == 0)
+	else
 	{
-		if (execve(command, argv, NULL) == -1)
-		{
-			perror("Error:");
+		wait(&status);
+		if (WIFEXITED(status))
+			status = WEXITSTATUS(status);
+	}
 
-		}
-
-
-       
-    }
-}
+	return (status);
 }
