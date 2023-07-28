@@ -1,26 +1,27 @@
 #include"shell.h"
 
 /**
- * _env - prints environment
+ * getenv - prints environment
+ * Retunr: void
 */
-void _env(void)
+void getenvironment(void)
 {
-	int i = 0;
+	int a = 0;
 
-	while (environ[i])
+	while (environ[a])
 	{
-		printf("%s\n", environ[i]);
-		i++;
+		printf("%s\n", environ[a]);
+		a++;
 	}
 }
 
 /**
- * _getenv - get env variables
+ * getenviron - get env variables
  * @env_var: env variable
  * Return: env variable result, its content
  */
 
-char *_getenv(char *env_var)
+char *getenviron(char *env_var)
 {
 	int i = 0, j;
 	int status;

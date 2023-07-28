@@ -13,12 +13,12 @@ int executecommands(char **argv);
 int string_lenght(char *c);
 int string_compare(const char *string1, const char *string2);
 char *string_concatenate(char *destination, char *src);
-int empty_line(char *command);
-void _env(void);
+int testifempty(char *command);
+void getenvironment(void);
 char **_split(char *str, char *sep);
-void *_calloc(unsigned int nmemb, unsigned int size);
+void *allocate(unsigned int nmemb, unsigned int size);
 char *search_path(char *command);
-char *_getenv(char *env_var);
+char *getenviron(char *env_var);
 
 extern char **environ;
 

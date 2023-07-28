@@ -25,11 +25,11 @@ int main(void)
 
 		if (string_compare("env", linequry) == 0)
 		{
-			_env();
+			getenvironment();
 			continue;
 		}
 
-		if (empty_line(linequry) == 1)
+		if (testifempty(linequry) == 1)
 		{
 			status = 0;
 			continue;

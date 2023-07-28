@@ -9,14 +9,18 @@
  */
 char *string_concatenate(char *destination, char *src)
 {
-	char *ret = destination;
+		int i, j;
 
-	while (*destination)
-		destination++;
-	while (*src)
-		*destination++ = *src++;
-	*destination = *src;
-	return (ret);
+	for (i = 0; destination[i] != '\0'; i += 1)
+	{}
+
+	for (j = 0; src[j] != '\0'; j += 1)
+	{
+		destination[i] = src[j];
+		i++;
+	}
+	destination[i] = '\0';
+	return (destination);
 }
 
 
@@ -51,19 +55,12 @@ int string_compare(const char *string1, const char *string2)
 
 int string_lenght(char *c)
 {
-   int len = 0;
-    if (!c)
-    {
-        return (0);
-    }
-    else
-    {
-        for (; *c; c++)
-        {
-            len++;
-        }
-    }
-    return (len);
+   int a = 0;
+
+	while (c[a] != '\0')
+		a++;
+
+	return (a);
 }
 
 /**
@@ -120,13 +117,13 @@ char *string_copy(char *dest, const char *src)
  * Return: 0 or 1 (int)
  */
 
-int empty_line(char *command)
+int testifempty(char *command)
 {
-	int i;
+	int a;
 
-	for (i = 0; command[i] != '\0'; i++)
+	for (a = 0; command[a] != '\0'; a++)
 	{
-		if (command[i] != ' ')
+		if (command[a] != ' ')
 			return (0);
 	}
 	return (1);
@@ -147,7 +144,7 @@ char **_split(char *str, char *sep)
 	int i = 0;
 
 	aux = strtok(str, sep);
-	split_str = (char **)_calloc(100, sizeof(char *));
+	split_str = (char **)allocate(100, sizeof(char *));
 
 	if (!split_str)
 	{
