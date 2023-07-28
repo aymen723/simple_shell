@@ -1,49 +1,49 @@
 #include "main.h"
 
 /**
- * search_path - search file between the path
- * @command: cmd
- * Return: cmd path
+ * search_pth - search file between the pth
+ * @cmd: cmd
+ * Return: cmd pth
  */
-char *search_path(char *command)
+char *search_pth(char *cmd)
 {
-	char *path = getenviron("PATH"), *path_cpy;
-	char **path_split;
-	char *path_concat = NULL;
-	int i = 0, path_len = 0;
-	struct stat info;
+	char *pth = getenviron("pth"), *pth_cpy;
+	char **pth_split;
+	char *pth_concat = NULL;
+	int i = 0, pth_len = 0;
+	struct stat inf;
 
-	if (stat(command, &info) == 0)
-		return (command);
+	if (stat(cmd, &inf) == 0)
+		return (cmd);
 
-	path_cpy = malloc(string_lenght(path) + 1);
+	pth_cpy = malloc(string_lenght(pth) + 1);
 
-	path_cpy = string_copy(path_cpy, path);
-	path_split = _split(path_cpy, ":");
+	pth_cpy = string_copy(pth_cpy, pth);
+	pth_split = _split(pth_cpy, ":");
 
-	while (path_split[i])
+	while (pth_split[i])
 	{
-		path_len = string_lenght(path_split[i]);
+		pth_len = string_lenght(pth_split[i]);
 
-		if (path_split[i][path_len - 1] != '/')
-			path_concat = string_concatenate(path_split[i], "/");
+		if (pth_split[i][pth_len - 1] != '/')
+			pth_concat = string_concatenate(pth_split[i], "/");
 
-		path_concat = string_concatenate(path_split[i], command);
+		pth_concat = string_concatenate(pth_split[i], cmd);
 
-		if (stat(path_concat, &info) == 0)
+		if (stat(pth_concat, &inf) == 0)
 			break;
 
 		i++;
 	}
 
-	free(path_cpy);
+	free(pth_cpy);
 
-	if (!path_split[i])
+	if (!pth_split[i])
 	{
-		free(path_split);
+		free(pth_split);
 		return (NULL);
 	}
 
-	free(path_split);
-	return (path_concat);
+	free(pth_split);
+	return (pth_concat);
 }

@@ -1,9 +1,9 @@
-#include"main.h"
+#include "main.h"
 
 /**
  * getenvironment - prints environment
  * Retunr: void
-*/
+ */
 void getenvironment(void)
 {
 	int a = 0;
@@ -17,11 +17,11 @@ void getenvironment(void)
 
 /**
  * getenviron - get env variables
- * @env_var: env variable
+ * @env: env variable
  * Return: return the env result
  */
 
-char *getenviron(char *env_var)
+char *getenviron(char *env)
 {
 	int i = 0, j;
 	int status;
@@ -32,7 +32,7 @@ char *getenviron(char *env_var)
 
 		for (j = 0; environ[i][j] != '='; j++)
 		{
-			if (environ[i][j] != env_var[j])
+			if (environ[i][j] != env[j])
 				status = 0;
 		}
 		if (status == 1)

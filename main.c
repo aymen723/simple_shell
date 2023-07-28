@@ -1,17 +1,17 @@
-#include"main.h"
+#include "main.h"
 /**
- * main - the main function for shell
-  * @void: void
+ * main - the main function for the shell
+ * @void: void
  * Return: an iteger for the status
-*/
+ */
 int main(void)
 {
-char *linequry = NULL;
-size_t n = 0;
-ssize_t nchars_read;
-int status = 0;
-char **argv;
-char *qury = "$ ";
+	char *linequry = NULL;
+	size_t n = 0;
+	ssize_t nchars_read;
+	int status = 0;
+	char **argv;
+	char *qury = "$ ";
 	while (1)
 	{
 		if (isatty(0))
@@ -40,6 +40,6 @@ char *qury = "$ ";
 		else
 			perror("Error");
 		free(argv);
-}
-return (status);
+	}
+	return (status);
 }
