@@ -39,6 +39,10 @@ if (strncmp(argv[0], "/", 1) != 0)
 {
 argv[0] = get_location(argv[0]);
 }
+else
+{
+argv[0] = search_path(argv[0]);
+}
 		if (argv[0] != NULL)
 			status = executecommands(argv);
 		else
