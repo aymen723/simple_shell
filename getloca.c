@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * search_path - search file between the pth
+ * get_pth - search file between the pth
  * @cmd: cmd
  * Return: cmd pth
  */
-char *search_path(char *cmd)
+char *get_pth(char *cmd)
 {
 	char *pth = getenviron("pth"), *pth_cpy;
 	char **pth_split;
@@ -19,7 +19,7 @@ char *search_path(char *cmd)
 	pth_cpy = malloc(string_lenght(pth) + 1);
 
 	pth_cpy = string_copy(pth_cpy, pth);
-	pth_split = _split(pth_cpy, ":");
+	pth_split = splt_str(pth_cpy, ":");
 
 	while (pth_split[i])
 	{

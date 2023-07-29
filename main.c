@@ -34,8 +34,8 @@ int main(void)
 			status = 0;
 			continue;
 		}
-		argv = _split(linequry, " ");
-		argv[0] = search_path(argv[0]);
+		argv = splt_str(linequry, " ");
+		argv[0] = get_pth(argv[0]);
 		if (argv[0] != NULL)
 			status = executecommands(argv);
 		else

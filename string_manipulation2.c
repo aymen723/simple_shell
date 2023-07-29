@@ -20,13 +20,13 @@ return (1);
 
 
 /**
- * _split - split string
+ * splt_str - split string
  * @str: string
  * @sep: separator
  * Return: divided path
  */
 
-char **_split(char *str, char *sep)
+char **splt_str(char *str, char *sep)
 {
 	char *aux, **split_str;
 	int i = 0;

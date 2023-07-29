@@ -15,9 +15,9 @@ int string_compare(const char *string1, const char *string2);
 char *string_concatenate(char *destination, char *src);
 int testifempty(char *command);
 void getenvironment(void);
-char **_split(char *str, char *sep);
+char **splt_str(char *str, char *sep);
 void *allocate(unsigned int nmemb, unsigned int size);
-char *search_path(char *cmd);
+char *get_pth(char *cmd);
 char *getenviron(char *env);
 
 extern char **environ;
